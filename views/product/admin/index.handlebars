@@ -1,0 +1,39 @@
+Admin: List of Products | <a href="/admin/customers">List of Customers</a><br/>
+<hr/>
+
+<form method="GET">
+  Search:
+  <label for="name">Name:</label><input type="text" name="name" size="20" value="{{name}}">
+  <label for="name">Description:</label><input type="text" name="description" size="30" value={{description}}>
+  <label for="name">Min:</label><input type="number" name="min" size="4" value={{min}}>
+  <label for="name">Max:</label><input type="number" name="max" size="4" value={{max}}>
+  <input type="submit"/>
+</form>
+<h3>Admin Products {{{name}}}</h3>
+<a href="/admin/products/add">Add a Product</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Stock</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    	<tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.stock}}</td>
+        <td>{{this.description}}</td>
+        <td>{{formatNumber this.price style="currency" currency="USD"}}</td>
+        <td>
+          <a href="/admin/products/edit/{{this.id}}">Edit</a>
+          <a href="/admin/products/delete/{{this.id}}">Delete</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

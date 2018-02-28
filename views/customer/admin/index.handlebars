@@ -1,0 +1,18 @@
+Admin: <a href="/admin/products">List of Products</a> | List of Customers
+<hr/>
+
+<h3>Customers</h3>
+<table>
+  <thead>
+    <tr>
+      <td>Id</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each customers}}
+    	<tr>
+        <td><a href="/admin/customers/{{this._id}}/orders">{{this._id}}</a></td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

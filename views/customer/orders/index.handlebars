@@ -1,0 +1,34 @@
+{{#if admin}}
+Admin: <a href="/admin/products">List of Products</a> | <a href="/admin/customers">List of Customers</a>
+<br>
+customerID: {{customerId}}
+{{/if}}
+
+<h3>Orders</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Total Items</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    	<tr>
+        <td>
+        {{#if ../admin}}
+          <a href="/admin/customers/{{../customerId}}/orders/{{this.orderId}}">
+        {{else}}
+          <a href="/orders/{{this.orderId}}">
+        {{/if}}
+        {{formatDate this.date}}</a></td>
+        <td>{{this.items.length}}</td>
+        <td>{{formatNumber this.total style="currency" currency="USD"}}</td>
+        {{#if ../admin}}
+          <td><a href="/admin/customers/{{../customerId}}/orders/{{this.orderId}}/delete">Delete</a></td>
+        {{/if}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

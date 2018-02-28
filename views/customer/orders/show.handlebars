@@ -1,0 +1,23 @@
+<h3>Order on {{formatDate date}}</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    	<tr>
+        <td><a href="/products/{{this.product._id}}">{{this.product.name}}</a></td>
+        <td>{{{this.quantity}}}</td>
+        <td>{{formatNumber this.product.price style="currency" currency="USD"}}</td>
+        <td>{{formatNumber this.totalPrice style="currency" currency="USD"}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+Total: {{formatNumber total style="currency" currency="USD"}}<br/>

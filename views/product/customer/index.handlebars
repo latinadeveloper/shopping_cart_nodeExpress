@@ -1,0 +1,34 @@
+<!-- search bar on top -->
+<form method="GET">
+  Search <label for="name">Name:</label><input type="text" name="name" size="20" value="{{name}}">
+  <label for="name">Description:</label><input type="text" name="description" size="30" value={{description}}>
+  <label for="name">Min:</label><input type="number" name="min" size="4" value={{min}}>
+  <label for="name">Max:</label><input type="number" name="max" size="4" value={{max}}>
+  <input type="submit"/>
+</form>
+<br>
+
+<h3>Customer Products {{{name}}}</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Color</th>
+      <th>Stock</th>
+      <th>Price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    	<tr>
+        <td><a href="/products/{{id}}">{{this.name}}</a></td>
+        <td>{{this.description}}</td>
+        <td style="background-color:{{this.color}}"></td>
+        <td>{{this.stock}}</td>
+        <td>{{formatNumber this.price style="currency" currency="USD"}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

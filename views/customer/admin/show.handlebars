@@ -1,0 +1,34 @@
+Admin: <a href="/admin/products">List of Products</a> | <a href="/admin/customers">List of Customers</a>
+/
+<br>
+customerID: {{customerId}} / order
+
+<h3>Order {{orderId}}</h3>
+
+<form method="POST" action="/admin/customers/{{customerId}}/orders/{{orderId}}/update">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    	<tr>
+        <td><a href="/products/{{this.product._id}}">{{this.product.name}}</a></td>
+        <td><input type="number" min="0" name="quantity[{{this.product._id}}]" size="5" value={{this.quantity}}></td>
+        <td>{{formatNumber this.product.price style="currency" currency="USD"}}</td>
+        <td>{{formatNumber this.totalPrice style="currency" currency="USD"}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+  <input type="submit" width="100" value="Update">
+</form>
+
+Total: {{formatNumber total style="currency" currency="USD"}}
+
+Date: {{formatDate date}}

@@ -1,0 +1,57 @@
+<form method="POST" action="/admin/products/add">
+	<table>
+    <caption>Add a New Product</caption>
+		<tr>
+		 <td valign="top">
+		  <label for="name">Name:</label>
+		 </td>
+		 <td valign="top">
+		  <input type="text" name="name" size="30" pattern=".{3,}" required="true">
+		 </td>
+	  </tr>
+	  <tr>
+		 <td valign="top">
+		  <label for="stock">Stock:</label>
+		 </td>
+		 <td valign="top">
+		  <input type="number" min="0" name="stock" size="5" required="true">
+		 </td>
+	  </tr>
+		<tr>
+		 <td valign="top">
+		  <label for="description">Description:</label>
+		 </td>
+		 <td valign="top">
+		  <textarea name="description" cols=="100" rows="5"></textarea>
+		 </td>
+	  </tr>
+		<tr>
+		 <td valign="top">
+		  <label for="price">Price:</label>
+		 </td>
+		 <td valign="top">
+		  <input  type="number" min="0" step="any" name="price" size="9" required="true">
+		 </td>
+	  </tr>
+		<tr>
+			<td valign="top">
+			 <label for="price">Color:</label>
+			</td>
+			<td valign="top">
+ 				<input type='text' id="color" name="color" value="#000000"/>
+			</td>
+		</tr>
+	  <tr>
+	 	 <td colspan="2">
+	  	<input type="submit" width="100"/>
+	   </td>
+	  </tr>
+ </table>
+
+ <script>
+ $(function () {
+	 $('#color').colorpicker({ useAlpha: false });
+ });
+</script>
+
+</form>
